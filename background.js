@@ -1,6 +1,6 @@
 function getImages() {
     chrome.storage.local.get(['albums'], async function (result) {
-        const idString = result.albums.filter((x) => { return x.enabled }).filter((x) => { return x.url != "" }).map((albumUrl) => { return albumUrl.url.replace("https://photos.app.goo.gl/", "") }).join(",")
+        const idString = result.albums.filter((x) => { return x.url != "" }).map((albumUrl) => { return albumUrl.url.replace("https://photos.app.goo.gl/", "") }).join(",")
         console.log(idString)
 
         let newURLS = [];
@@ -19,7 +19,7 @@ function getImages() {
 
         console.log(result.albums);
         result.albums = result.albums.map((album) => {
-            if (data.filter((x) => { return x.url == album.url }).length > 0 && data.filter((x) => { return x.url == album.url })[0].urls.length > 0) {
+            if (data.filter((x) => { return x.url == album.url })[0].urls.length > 0) {
                 album.wrongLink = undefined;
                 album.name = data.filter((x) => { return x.url == album.url })[0].title;
             } else {
@@ -39,7 +39,7 @@ function getImages() {
     });
 }
 
-const defaultAlbums = [{ url: "https://photos.app.goo.gl/9APkeFxFjWWegNmC7", enabled: true, name: "Doggo Backgrounds", id: Math.round(Math.random() * 10000000) }];
+const defaultAlbums = [{ url: "https://photos.app.goo.gl/9APkeFxFjWWegNmC7", name: "Doggo Backgrounds", id: Math.round(Math.random() * 10000000) }];
 
 chrome.runtime.onInstalled.addListener(e => {
     chrome.storage.local.get(['albums'], function (result) {

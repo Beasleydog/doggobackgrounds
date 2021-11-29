@@ -6,7 +6,7 @@ renderAlbums();
 newAlbum.onclick = function () {
     chrome.storage.local.get(['albums'], function (result) {
         let newAlbums = result.albums;
-        newAlbums.push({ url: "", enabled: true, name: "", id: Math.round(Math.random() * 10000000) })
+        newAlbums.push({ url: "", name: "", id: Math.round(Math.random() * 10000000) })
         chrome.storage.local.set({ albums: newAlbums });
 
         renderAlbums();
@@ -18,19 +18,18 @@ function renderAlbums() {
     chrome.storage.local.get(['albums'], function (result) {
         const albums = result.albums;
         albums.forEach((album) => {
-            renderAlbum(album.id, album.url, album.name, album.enabled, album.wrongLink)
+            renderAlbum(album.id, album.url, album.name, album.wrongLink)
         });
     });
 
 }
-function renderAlbum(id, url, name, status, wrongLink) {
+function renderAlbum(id, url, name, wrongLink) {
     let albumContainer = document.createElement("div");
     document.getElementById("list").appendChild(albumContainer);
 
     albumContainer.outerHTML = ` 
     <div class="albumContainer" albumId="${id}">
         <div class="albumStatus">
-            <input type="checkbox" ${(status ? "checked" : "")} class="albumToggle">
             <div class="albumDelete">❌</div>
         </div>
         <div class="albumInfo">
@@ -51,9 +50,6 @@ function renderAlbum(id, url, name, status, wrongLink) {
         }
     }
 
-    list.querySelector(`div[albumid="${id}"]`).querySelector("input[type=checkbox]").oninput = function () {
-        updateAlbumStatus(id, this.checked);
-    }
 
     list.querySelector(`div[albumid="${id}"]`).querySelector("div.albumDelete").onclick = function () {
         deleteAlbum(id);
@@ -67,20 +63,6 @@ function deleteAlbum(id) {
         })
         chrome.storage.local.set({ albums: newAlbums }, function () {
             renderAlbums();
-            chrome.runtime.sendMessage({ msg: "getImages" });
-        });
-    });
-}
-function updateAlbumStatus(id, status) {
-    chrome.storage.local.get(['albums'], function (result) {
-        let newAlbums = result.albums;
-        newAlbums = newAlbums.map((album) => {
-            if (album.id == id) {
-                album.enabled = status;
-            }
-            return album;
-        })
-        chrome.storage.local.set({ albums: newAlbums }, function () {
             chrome.runtime.sendMessage({ msg: "getImages" });
         });
     });

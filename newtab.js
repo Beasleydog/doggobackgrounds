@@ -5,11 +5,7 @@ chrome.storage.local.get(['count', 'urls', 'albums'], function (result) {
   let albums = result.albums;
 
   if (list.length == 0) {
-    if (albums.length == 0) {
-      noAlbums.style.display = "block";
-    } else {
-      noImg.style.display = "block";
-    }
+    noImg.style.display = "block";
   } else {
     document.getElementById("img").src = list[current % list.length];
 
