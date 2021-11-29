@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/popup.js" defer></script>
+</head>
+
+<body>
+    <div id="title">Doggo Backgrounds</div>
+    <div id="albums">
+        <div id="list"></div>
+        <div id="newAlbum">➕</div>
+    </div>
+    <style>
+        .wrong {
+            border-color: red;
+        }
+
+        #list {
+            width: 90vw;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        #newAlbum {
+            cursor: pointer;
+            margin-top: 5px;
+            transition: background-color 0.1s;
+            padding: 4px;
+            border-radius: 50%;
+            background: white;
+        }
+
+        #newAlbum:hover {
+            background-color: lightgray;
+        }
+
+        #albums {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .albumUrl {
+            border-width: 2px;
+            border-style: solid;
+            outline: none;
+            border-color: red;
+        }
+
+        .albumContainer {
+            display: flex;
+            flex-direction: row;
+            box-shadow: gray 0px 0px 2px;
+            border-radius: 5px;
+            padding: 5px;
+        }
+
+        .albumInfo {
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .albumStatus {
+            width: 30px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .albumDelete {}
+
+        .albumToggle {
+            padding: 0;
+            margin: 0;
+            /* width: 50px; */
+            /* height: 50px; */
+        }
+
+        #title {
+            font-size: 18px;
+            font-weight: 700;
+            margin-left: 50%;
+            transform: translateX(-50%);
+            width: max-content;
+            padding-top: 5px;
+            padding-bottom: 5px;
+        }
+
+        #album {
+            width: 300px;
+            outline: none;
+            border-radius: 5px;
+            border-width: 3px;
+            border-style: solid;
+            border-color: red;
+        }
+
+        .valid {
+            border-color: green !important;
+        }
+
+        body {
+            /* padding: 5px; */
+            width: 300px;
+        }
+    </style>
+</body>
+
+</html>

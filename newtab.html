@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="user-scalable=no, width=device-width" />
+</head>
+
+<body>
+    <canvas id="getURL"></canvas>
+    <div id="time"></div>
+    <div id="date"></div>
+    <img id="img"></img>
+    <div id="noImg">
+        No images found in album. Try checking your links?
+    </div>
+    <div id="noAlbums">
+        No albums enabled. Try enabling them in the popup?
+    </div>
+    <div id="weather"></div>
+    <div id="subWeather"></div>
+    <div id="location"></div>
+    <canvas id="backCanvas"></canvas>
+    <style>
+        #noImg {
+            display: none;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            color: white;
+            font-weight: 800;
+            font-size: 16px;
+            transform: translate(-50%, -50%);
+        }
+
+        #noAlbums {
+            display: none;
+            top: 50%;
+            left: 50%;
+            position: absolute;
+            color: white;
+            font-weight: 800;
+            font-size: 16px;
+            transform: translate(-50%, -50%);
+        }
+
+        #noImgLink {
+            color: #F5F5F5;
+        }
+
+        #upload {
+            fill: #9f9f9f;
+            position: absolute;
+            bottom: 5px;
+            right: 7px;
+            width: 34px;
+            height: auto;
+            cursor: pointer;
+        }
+
+        #backCanvas {
+            left: 0px;
+            top: 0px;
+            position: absolute;
+            z-index: -1;
+        }
+
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            padding: 0px;
+            background: #141514;
+        }
+
+        #time {
+            font-size: 5.5em;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-weight: bold;
+            top: 35px;
+            text-shadow: black 0px 0px 6px;
+        }
+
+        #date {
+            font-size: 2.5em;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-weight: bold;
+            top: 110px;
+            text-shadow: black 0px 0px 6px;
+        }
+
+        #img {
+            max-width: 80vw;
+            max-height: 60vh;
+            display: block;
+            left: 50vw;
+            top: 50vh;
+            position: absolute;
+            transform: translate(-50%, calc(-50% + 40px));
+            border-radius: 10px;
+            box-shadow: black 0px 0px 6px;
+            opacity: 0;
+            transition: opacity .4s, transform .4s;
+        }
+
+        #weather {
+            left: 15px;
+            bottom: 35px;
+            position: fixed;
+            color: gray;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        #subWeather {
+            left: 5px;
+            bottom: 25px;
+            position: fixed;
+            color: gray;
+            font-weight: bold;
+            font-size: 15px;
+        }
+
+        #location {
+            left: 15px;
+            bottom: 15px;
+            position: fixed;
+            color: gray;
+            font-weight: bold;
+            font-size: 15px;
+        }
+    </style>
+</body>
+<script src=newtab.js></script>
