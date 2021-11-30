@@ -16,28 +16,30 @@
         <div id="newAlbum">➕</div>
     </div>
     <style>
-        .wrong {
-            border-color: red;
-        }
-
         #list {
             width: 90vw;
             display: flex;
             flex-direction: column;
             gap: 10px;
+            margin-top: 10px;
+            margin-bottom: 5px;
         }
 
         #newAlbum {
             cursor: pointer;
             margin-top: 5px;
-            transition: background-color 0.1s;
+            transition: filter 0.1s, transform 0.1s;
             padding: 4px;
             border-radius: 50%;
-            background: white;
+            color: transparent;
+            text-shadow: 0 0 white;
+            filter: drop-shadow(0px 0px 0px black);
+            transform-origin: center;
         }
 
         #newAlbum:hover {
-            background-color: lightgray;
+            filter: drop-shadow(0px 0px 4px black);
+            transform: scale(1.1);
         }
 
         #albums {
@@ -47,18 +49,28 @@
         }
 
         .albumUrl {
-            border-width: 2px;
-            border-style: solid;
+            border: none;
             outline: none;
-            border-color: red;
+            /* border-color: #B0413E; */
+            background: none;
+            border-radius: 5px;
+            color: white;
+            padding: 4px;
+            margin-top: 5px;
+            box-shadow: #B0413E 0px 0px 4px !important;
         }
 
         .albumContainer {
             display: flex;
             flex-direction: row;
-            box-shadow: gray 0px 0px 2px;
+            box-shadow: #080808 0px 0px 4px;
             border-radius: 5px;
-            padding: 5px;
+            padding: 8px;
+        }
+
+        .albumTitle {
+            font-size: 14px;
+            font-weight: 600;
         }
 
         .albumInfo {
@@ -76,7 +88,9 @@
             justify-content: center;
         }
 
-        .albumDelete {}
+        .albumDelete {
+            cursor: pointer;
+        }
 
         .albumToggle {
             padding: 0;
@@ -86,7 +100,7 @@
         }
 
         #title {
-            font-size: 18px;
+            font-size: 22px;
             font-weight: 700;
             margin-left: 50%;
             transform: translateX(-50%);
@@ -95,22 +109,19 @@
             padding-bottom: 5px;
         }
 
-        #album {
-            width: 300px;
-            outline: none;
-            border-radius: 5px;
-            border-width: 3px;
-            border-style: solid;
-            border-color: red;
+        .valid {
+            box-shadow: #080808 0px 0px 2px !important;
         }
 
-        .valid {
-            border-color: green !important;
+        .wrong {
+            box-shadow: #B0413E 0px 0px 4px !important;
         }
 
         body {
             /* padding: 5px; */
             width: 300px;
+            background: #141514;
+            color: white;
         }
     </style>
 </body>

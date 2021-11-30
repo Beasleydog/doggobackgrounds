@@ -34,7 +34,7 @@ function renderAlbum(id, url, name, wrongLink) {
         </div>
         <div class="albumInfo">
             <div class="albumTitle">${name}</div>
-            <input class="albumUrl ${(wrongLink ? "wrong" : "valid")}" type="text" value="${url}"></input>
+            <input class="albumUrl ${(wrongLink || url == "" ? "wrong" : "valid")}" type="text" value="${url}"></input>
         </div>
     </div>`;
 
